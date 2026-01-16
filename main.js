@@ -33,3 +33,17 @@ else{
 //this is ternery operator.it can get output using one line
 
 isbin ? console.log(getage(22)) : console.log(getcity("Galle"));
+
+
+
+//object and array destructechring
+
+
+const product={
+    pname :`Dimuthu`,
+pnum:20
+}
+
+const { pnum,pname } = product;
+
+console.log(pname,pnum);
