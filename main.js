@@ -55,3 +55,14 @@ let arrone=[1,2,3,4,3]
 let arrtwo=[4,4,4,4]
 
 console.log([...arrone,23333,...arrtwo]);
+
+
+//raised operator
+
+function printnum(a,s,d,...f)
+{
+    console.log(a,s,d,f);
+    
+}
+
+printnum(1,2,3,4,4,3)
