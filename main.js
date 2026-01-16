@@ -47,3 +47,11 @@ pnum:20
 const { pnum,pname } = product;
 
 console.log(pname,pnum);
+
+
+//spread operator
+
+let arrone=[1,2,3,4,3]
+let arrtwo=[4,4,4,4]
+
+console.log([...arrone,23333,...arrtwo]);
