@@ -113,44 +113,25 @@ console.log(someperson);
 const Everyperson = personarray.every((person) => person.Age === 21);
 console.log(Everyperson);
 
-const list = document.querySelector(".list");
+let fullist = "";
+const list = document.getElementById("list");
 
-// API එකෙන් දත්ත ලබා ගැනීමට async function එකක්
-async function fetchlistdata() {
-  try {
-    // dummyjson API එකට GET request එකක් යවනවා
-    const responce = await fetch("https://dummyjson.com/products", {
-      method: "GET",
+// fakestoreapi එකෙන් products ලබා ගන්නවා
+fetch("https://fakestoreapi.com/products")
+  .then((res) => {
+    // response එක JSON format එකට convert කරලා return කරනවා
+    return res.json();
+  })
+  .then((data) => {
+    // data array එක loop කරලා එක් එක් item එකේ title එක add කරනවා
+    data.map((item) => {
+      fullist = fullist + item.title + "<br>"; // 'data.title' නෙවෙයි 'item.title'
     });
 
-    // response එක JSON format එකට convert කරනවා
-    const result = await responce.json();
-    console.log(result);
-
-    // result එක සහ products array එක තිබේද කියලා check කරනවා
-    if (result && result.products) {
-      // products array එක loop කරලා එක් එක් product එක display කරනවා
-      result.products.forEach((product) => {
-        // නව list item එකක් create කරනවා
-        const listItem = document.createElement("div");
-        listItem.classList.add("list-item");
-
-        // product details list item එකට add කරනවා
-        listItem.innerHTML = `
-                    <h3>${product.title}</h3>
-                    <p>මිල: $${product.price}</p>
-                    <p>${product.description}</p>
-                `;
-
-        // list එකට item එක append කරනවා
-        list.appendChild(listItem);
-      });
-    }
-  } catch (error) {
+    // list එකට HTML content එක set කරනවා
+    list.innerHTML = fullist;
+  })
+  .catch((error) => {
     // error එකක් උනොත් console එකේ show කරනවා
-    console.log("දත්ත ලබා ගැනීමේ දෝෂයක්:", error);
-  }
-}
-
-// function එක call කරනවා
-fetchlistdata();
+    console.error("දෝෂයක් සිදු වී ඇත:", error);
+  });
