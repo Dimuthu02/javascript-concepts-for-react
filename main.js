@@ -57,7 +57,7 @@ let arrtwo=[4,4,4,4]
 console.log([...arrone,23333,...arrtwo]);
 
 
-//raised operator
+//rest operator
 
 function printnum(a,s,d,...f)
 {
