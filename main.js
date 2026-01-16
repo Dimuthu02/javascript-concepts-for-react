@@ -66,3 +66,49 @@ function printnum(a,s,d,...f)
 }
 
 printnum(1,2,3,4,4,3)
+
+
+
+//Map
+ const personarray = [
+   {
+     firstname: "Dimuthu Karunarathna",
+     Age: 22,
+     village: "Galle",
+   },
+   {
+     firstname: "kalana Karunarathna",
+     Age: 20,
+     village: "Galle",
+   },
+   {
+     firstname: "Dimuthu Karunarathna",
+     Age: 21,
+     village: "Galle",
+   },
+   {
+     firstname: "Dimuthu Karunarathna",
+     Age: 22,
+     village: "Galle",
+   },
+ ];
+
+const extractname = personarray.map((person,index)=>{
+    console.log(index);
+    
+    return person.firstname
+})
+console.log(extractname);
+
+const filterperson=personarray.filter((person,index)=> person.Age===21)
+
+
+console.log(filterperson);
+
+
+//some and every
+const someperson = personarray.some((person, index) => person.Age === 21);
+console.log(someperson);
+
+const Everyperson = personarray.every((person) => person.Age === 21);
+console.log(Everyperson);
